@@ -1,0 +1,18 @@
+type Query {
+  meals: [Meal!]!
+  categories: [Category!]!
+}
+
+type Category {
+  id: ID!
+  name: String
+  meals: [Meal!]!
+}
+
+type Meal {
+  id: ID!
+  name: String
+  price: Float
+  quantity: Int
+  category: Category
+}
