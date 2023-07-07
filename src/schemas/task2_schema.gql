@@ -31,10 +31,13 @@ type Comment {
 type Mutation {
   createPost(input: CreatePostInput!): Post!
   updatePost(id: ID!, input: UpdatePostInput!): Post!
+  removePost(id: ID!): Post!
   createUser(input: CreateUserInput!): User!
   updateUser(id: ID!, input: UpdateUserInput!): User!
+  removeUser(id: ID!): User!
   createComment(input: CreateCommentInput!): Comment!
   updateComment(id: ID!, input: UpdateCommentInput!): Comment!
+  removeComment(id: ID!): Comment!
 }
 
 input CreatePostInput {
