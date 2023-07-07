@@ -118,6 +118,18 @@ const resolvers = {
 
       return posts.at(-1);
     },
+    updatePost: (_, args) => {
+      const post = posts.find(post => post.id == args.id);
+      const index = posts.findIndex(post => post.id == args.id);
+
+      if (!post) {
+        throw new Error(`Post not found`);
+      };
+
+      posts.splice(index, 1, { ...post, ...args.input });
+
+      return posts[index];
+    },
     createUser: (_, args) => {
       users.push({
         id: uuidv4(),
@@ -125,6 +137,18 @@ const resolvers = {
       });
 
       return users.at(-1);
+    },
+    updateUser: (_, args) => {
+      const user = users.find(user => user.id == args.id);
+      const index = users.findIndex(user => user.id == args.id);
+
+      if (!user) {
+        throw new Error(`User not found`);
+      };
+
+      users.splice(index, 1, { ...user, ...args.input });
+
+      return users[index];
     },
     createComment: (_, args) => {
       comments.push({
@@ -135,7 +159,19 @@ const resolvers = {
       });
 
       return comments.at(-1);
-    }
+    },
+    updateComment: (_, args) => {
+      const comment = comments.find(comment => comment.id == args.id);
+      const index = comments.findIndex(comment => comment.id == args.id);
+
+      if (!comment) {
+        throw new Error(`Comment not found`);
+      };
+
+      comments.splice(index, 1, { ...comment, ...args.input });
+
+      return comments[index];
+    }   
   }
 };
 
