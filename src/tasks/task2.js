@@ -39,7 +39,7 @@ const comments = [
   },
   {
     id: "2",
-    text: "Xayrom bo'ldik barchamiz",
+    text: "Xayron bo'ldik barchamiz",
     user_id: "1",
     post_id: "2",
   },
@@ -56,6 +56,33 @@ const resolvers = {
     posts: () => posts,
     users: () => users,
     comments: () => comments,
+    post: (_, args) => {
+      const post = posts.find(post => post.id == args.id);
+
+      if(!post) {
+        throw new Error('Post not found');
+      };
+
+      return post;
+    },
+    user: (_, args) => {
+      const user = users.find(user => user.id == args.id);
+
+      if(!user) {
+        throw new Error('User not found');
+      };
+
+      return user;
+    },
+    comment: (_, args) => {
+      const comment = comments.find(comment => comment.id == args.id);
+
+      if(!comment) {
+        throw new Error('Comment not found');
+      };
+
+      return comment;
+    },
   },
   Post: {
     user: (parent) => {

@@ -3,13 +3,13 @@ import { readFileSync } from 'fs';
 import { startStandaloneServer } from '@apollo/server/standalone';
 
 // =============== Task1 uchun resolvers =============== 
-import resolvers from './tasks/task1.js';
-const typeDefs = readFileSync('./src/schemas/task1_schema.gql', 'utf8');
+// import resolvers from './tasks/task1.js';
+// const typeDefs = readFileSync('./src/schemas/task1_schema.gql', 'utf8');
 
 
 // =============== Task2 uchun resolvers =============== 
-// import resolvers from './tasks/task2.js';
-// const typeDefs = readFileSync('./src/schemas/task2_schema.gql', 'utf8');
+import resolvers from './tasks/task2.js';
+const typeDefs = readFileSync('./src/schemas/task2_schema.gql', 'utf8');
 
 
 // =============== Task3 uchun resolvers =============== 
