@@ -169,6 +169,18 @@ const resolvers = {
 
       return groups.at(-1);
     },
+    updateGroup: (_, args) => {
+      const group = groups.find(group => group.id == args.id);
+      const index = groups.findIndex(group => group.id == args.id);
+
+      if (!group) {
+        throw new Error(`Group not found`);
+      };
+
+      groups.splice(index, 1, { ...group, ...args.input });
+
+      return groups[index];
+    },
     createUser: (_, args) => {
       users.push({
         id: uuidv4(),
