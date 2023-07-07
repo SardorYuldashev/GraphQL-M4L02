@@ -23,9 +23,11 @@ type Mutation {
   createGroup(input: CreateGroupInput!): Group!
   updateGroup(id: ID!, input: UpdateGroupInput!): Group!
   removeGroup(id: ID!): Group!
-  
+
   createUser(input: CreateUserInput!): User!
   updateUser(id: ID!, input: UpdateUserInput!): User!
+  removeUser(id: ID!): User!
+  
   addUserToGroup(input: AddUserToGroup!): String!
   updateUserOrGroup(id: ID!, input: UpdateUserOrGroupInput!): String!
 }

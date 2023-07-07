@@ -214,6 +214,18 @@ const resolvers = {
 
       return users[index];
     },
+    removeUser: (_, args) => {
+      const user = users.find(user => user.id == args.id);
+      const index = users.findIndex(user => user.id == args.id);
+
+      if (!user) {
+        throw new Error(`User not found`);
+      };
+
+      users.splice(index, 1);
+
+      return user;
+    },
     addUserToGroup: (_, args) => {
       group_users.push({
         id: uuidv4(),
