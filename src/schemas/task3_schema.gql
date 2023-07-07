@@ -18,3 +18,23 @@ type Group {
   name: String
   users: [User!]!
 }
+
+type Mutation {
+  createGroup(input: CreateGroupInput!): Group!
+  createUser(input: CreateUserInput!): User!
+  addUserForGroup(input: AddUserForGroup!): String!
+}
+
+input CreateGroupInput {
+  name: String!
+}
+
+input CreateUserInput {
+  first_name: String!
+  last_name: String!
+}
+
+input AddUserForGroup {
+  user_id: ID!
+  group_id: ID!
+}

@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from 'uuid';
+
 const groups = [
   {
     id: "1",
@@ -156,6 +158,34 @@ const resolvers = {
       return users.filter(user => {
         return existing.find(item => item.user_id === user.id);
       });
+    }
+  },
+  Mutation: {
+    createGroup: (_, args) => {
+      groups.push({
+        id: uuidv4(),
+        name: args.input.name
+      });
+
+      return groups.at(-1);
+    },
+    createUser: (_, args) => {
+      users.push({
+        id: uuidv4(),
+        first_name: args.input.first_name,
+        last_name: args.input.last_name
+      });
+
+      return users.at(-1);
+    },
+    addUserForGroup: (_, args) => {
+      group_users.push({
+        id: uuidv4(),
+        user_id: args.input.user_id,
+        group_id: args.input.group_id
+      })
+
+      return "User added for group"
     }
   }
 };
