@@ -1,3 +1,5 @@
+import { v4 as uuidv4} from 'uuid';
+
 const categories = [
   {
     id: "1",
@@ -103,6 +105,27 @@ const resolvers = {
   Category: {
     meals: (parent) => {
       return meals.filter(meal => meal.category_id === parent.id);
+    }
+  },
+  Mutation: {
+    createCategory: (_, args) => {
+      categories.push({
+        id: uuidv4(),
+        name: args.input.name
+      });
+
+      return categories.at(-1);
+    },
+    createMeal: (parent, args) => {
+      meals.push({
+        id: uuidv4(),
+        name: args.input.name,
+        price: args.input.price,
+        quantity: args.input.quantity,
+        category_id: args.input.category_id
+      });
+
+      return meals.at(-1);
     }
   }
 };

@@ -18,3 +18,19 @@ type Meal {
   quantity: Int
   category: Category
 }
+
+type Mutation {
+  createCategory(input: CreateCategoryInput!): Category!
+  createMeal(input: CreateMealInput!): Meal!
+}
+
+input CreateCategoryInput {
+  name: String!
+}
+
+input CreateMealInput {
+  name: String!
+  price: Float!
+  quantity: Int!
+  category_id: ID!
+}
