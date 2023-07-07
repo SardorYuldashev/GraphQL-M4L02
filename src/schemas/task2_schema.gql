@@ -27,3 +27,26 @@ type Comment {
   user: User
   post: Post
 }
+
+type Mutation {
+  createPost(input: CreatePostInput!): Post!
+  createUser(input: CreateUserInput!): User!
+  createComment(input: CreateCommentInput!): Comment!
+}
+
+input CreatePostInput {
+  title: String!
+  content: Float!
+  user_id: ID!
+}
+
+input CreateUserInput {
+  name: String!
+}
+
+input CreateCommentInput {
+  id: ID!
+  text: String!
+  user_id: ID!
+  post_id: ID!
+}

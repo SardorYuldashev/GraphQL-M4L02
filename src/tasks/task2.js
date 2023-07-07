@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from 'uuid';
+
 const posts = [
   {
     id: "1",
@@ -104,6 +106,36 @@ const resolvers = {
     post: (parent) => {
       return posts.find(post => post.id === parent.post_id);
     },
+  },
+  Mutation: {
+    createPost: (_, args) => {
+      posts.push({
+        id: uuidv4(),
+        title: args.input.title,
+        content: args.input.content,
+        user_id: args.input.user_id
+      });
+
+      return posts.at(-1);
+    },
+    createUser: (_, args) => {
+      users.push({
+        id: uuidv4(),
+        name: args.input.name
+      });
+
+      return users.at(-1);
+    },
+    createComment: (_, args) => {
+      comments.push({
+        id: uuidv4(),
+        text: args.input.text,
+        user_id: args.input.user_id,
+        post_id: args.input.post_id
+      });
+
+      return comments.at(-1);
+    }
   }
 };
 
