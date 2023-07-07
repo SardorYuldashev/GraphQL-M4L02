@@ -246,6 +246,18 @@ const resolvers = {
       group_users.splice(index, 1, { ...existing, ...args.input });
 
       return `Updated`;
+    },
+    removeUserfromGroup: (_, args) => {
+      const existing = group_users.find(item => item.id == args.id);
+      const index = group_users.findIndex(item => item.id == args.id);
+
+      if (!existing) {
+        throw new Error(`User or group not found`);
+      };
+
+      group_users.splice(index, 1);
+
+      return `Deleted`;
     }
   }
 };
