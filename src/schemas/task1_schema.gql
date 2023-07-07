@@ -21,11 +21,17 @@ type Meal {
 
 type Mutation {
   createCategory(input: CreateCategoryInput!): Category!
+  updateCategory(id: ID!, input: UpdateCategoryInput!): Category!
   createMeal(input: CreateMealInput!): Meal!
+  updateMeal(id: ID!, input: UpdateMealInput!): Meal!
 }
 
 input CreateCategoryInput {
   name: String!
+}
+
+input UpdateCategoryInput {
+  name: String
 }
 
 input CreateMealInput {
@@ -33,4 +39,11 @@ input CreateMealInput {
   price: Float!
   quantity: Int!
   category_id: ID!
+}
+
+input UpdateMealInput {
+  name: String
+  price: Float
+  quantity: Int
+  category_id: ID
 }

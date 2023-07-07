@@ -116,6 +116,18 @@ const resolvers = {
 
       return categories.at(-1);
     },
+    updateCategory: (_, args) => {
+      const category = categories.find(category => category.id == args.id);
+      const index = categories.findIndex(category => category.id == args.id);
+
+      if (!category) {
+        throw new Error(`Category not found`);
+      };
+
+      categories.splice(index, 1, {...category, ...args.input});
+
+      return categories[index];
+    },
     createMeal: (parent, args) => {
       meals.push({
         id: uuidv4(),
@@ -126,6 +138,18 @@ const resolvers = {
       });
 
       return meals.at(-1);
+    },
+    updateMeal: (_, args) => {
+      const meal = meals.find(meal => meal.id == args.id);
+      const index = meals.findIndex(meal => meal.id == args.id);
+
+      if (!meal) {
+        throw new Error(`Meal not found`);
+      };
+
+      meals.splice(index, 1, {...meal, ...args.input});
+
+      return meals[index];
     }
   }
 };
