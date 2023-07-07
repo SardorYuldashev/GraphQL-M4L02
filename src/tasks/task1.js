@@ -1,4 +1,4 @@
-import { v4 as uuidv4} from 'uuid';
+import { v4 as uuidv4 } from 'uuid';
 
 const categories = [
   {
@@ -124,9 +124,21 @@ const resolvers = {
         throw new Error(`Category not found`);
       };
 
-      categories.splice(index, 1, {...category, ...args.input});
+      categories.splice(index, 1, { ...category, ...args.input });
 
       return categories[index];
+    },
+    removeCategory: (_, args) => {
+      const category = categories.find(category => category.id == args.id);
+      const index = categories.findIndex(category => category.id == args.id);
+
+      if (!category) {
+        throw new Error(`Category not found`);
+      };
+
+      categories.splice(index, 1);
+
+      return category;
     },
     createMeal: (parent, args) => {
       meals.push({
@@ -147,9 +159,21 @@ const resolvers = {
         throw new Error(`Meal not found`);
       };
 
-      meals.splice(index, 1, {...meal, ...args.input});
+      meals.splice(index, 1, { ...meal, ...args.input });
 
       return meals[index];
+    },    
+    removeMeal: (_, args) => {
+      const meal = meals.find(meal => meal.id == args.id);
+      const index = meals.findIndex(meal => meal.id == args.id);
+
+      if (!meal) {
+        throw new Error(`Meal not found`);
+      };
+
+      meals.splice(index, 1);
+
+      return meal;
     }
   }
 };

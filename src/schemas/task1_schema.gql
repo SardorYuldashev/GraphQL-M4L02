@@ -24,6 +24,8 @@ type Mutation {
   updateCategory(id: ID!, input: UpdateCategoryInput!): Category!
   createMeal(input: CreateMealInput!): Meal!
   updateMeal(id: ID!, input: UpdateMealInput!): Meal!
+  removeCategory(id: ID!): Category!
+  removeMeal(id: ID!): Meal!
 }
 
 input CreateCategoryInput {
