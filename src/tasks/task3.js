@@ -122,7 +122,25 @@ const group_users = [
 const resolvers = {
   Query: {
     groups: () => groups,
-    users: () => users
+    users: () => users,
+    group: (_, args) => {
+      const group = groups.find(group => group.id == args.id);
+
+      if (!group) {
+        throw new Error('Group not found');
+      };
+
+      return group;
+    },
+    user: (_, args) => {
+      const user = users.find(user => user.id == args.id);
+
+      if (!user) {
+        throw new Error('User not found');
+      };
+
+      return user;
+    }
   },
   User: {
     groups: (parent) => {
@@ -137,7 +155,7 @@ const resolvers = {
 
       return users.filter(user => {
         return existing.find(item => item.user_id === user.id);
-      });      
+      });
     }
   }
 };

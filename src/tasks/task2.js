@@ -59,7 +59,7 @@ const resolvers = {
     post: (_, args) => {
       const post = posts.find(post => post.id == args.id);
 
-      if(!post) {
+      if (!post) {
         throw new Error('Post not found');
       };
 
@@ -68,7 +68,7 @@ const resolvers = {
     user: (_, args) => {
       const user = users.find(user => user.id == args.id);
 
-      if(!user) {
+      if (!user) {
         throw new Error('User not found');
       };
 
@@ -77,7 +77,7 @@ const resolvers = {
     comment: (_, args) => {
       const comment = comments.find(comment => comment.id == args.id);
 
-      if(!comment) {
+      if (!comment) {
         throw new Error('Comment not found');
       };
 

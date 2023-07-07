@@ -88,7 +88,7 @@ const resolvers = {
     category: (_, args) => {
       const category = categories.find(category => category.id == args.id);
 
-      if(!category) {
+      if (!category) {
         throw new Error('Category not found');
       };
 
