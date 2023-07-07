@@ -202,7 +202,7 @@ const resolvers = {
 
       return users[index];
     },
-    addUserForGroup: (_, args) => {
+    addUserToGroup: (_, args) => {
       group_users.push({
         id: uuidv4(),
         user_id: args.input.user_id,
@@ -210,6 +210,18 @@ const resolvers = {
       })
 
       return "User added for group"
+    },
+    updateUserOrGroup: (_, args) => {
+      const existing = group_users.find(item => item.id == args.id);
+      const index = group_users.findIndex(item => item.id == args.id);
+
+      if (!existing) {
+        throw new Error(`User or group not found`);
+      };
+
+      group_users.splice(index, 1, { ...existing, ...args.input });
+
+      return `Updated`;
     }
   }
 };

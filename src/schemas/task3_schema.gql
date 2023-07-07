@@ -24,7 +24,8 @@ type Mutation {
   updateGroup(id: ID!, input: UpdateGroupInput!): Group!
   createUser(input: CreateUserInput!): User!
   updateUser(id: ID!, input: UpdateUserInput!): User!
-  addUserForGroup(input: AddUserForGroup!): String!
+  addUserToGroup(input: AddUserToGroup!): String!
+  updateUserOrGroup(id: ID!, input: UpdateUserOrGroupInput!): String!
 }
 
 input CreateGroupInput {
@@ -45,7 +46,12 @@ input UpdateUserInput {
   last_name: String
 }
 
-input AddUserForGroup {
+input AddUserToGroup {
   user_id: ID!
   group_id: ID!
+}
+
+input UpdateUserOrGroupInput {
+  user_id: ID
+  group_id: ID
 }
