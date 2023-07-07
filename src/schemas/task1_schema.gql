@@ -1,6 +1,8 @@
 type Query {
   meals: [Meal!]!
+  meal(id: ID!): Meal!
   categories: [Category!]!
+  category(id: ID!): Category!
 }
 
 type Category {

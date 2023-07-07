@@ -75,7 +75,25 @@ const meals = [
 const resolvers = {
   Query: {
     meals: () => meals,
-    categories: () => categories
+    categories: () => categories,
+    meal: (_, args) => {
+      const meal = meals.find(meal => meal.id == args.id);
+
+      if (!meal) {
+        throw new Error('Meal not found');
+      };
+
+      return meal;
+    },
+    category: (_, args) => {
+      const category = categories.find(category => category.id == args.id);
+
+      if(!category) {
+        throw new Error('Category not found');
+      };
+
+      return category;
+    }
   },
   Meal: {
     category: (parent) => {
