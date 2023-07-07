@@ -162,7 +162,7 @@ const resolvers = {
       meals.splice(index, 1, { ...meal, ...args.input });
 
       return meals[index];
-    },    
+    },
     removeMeal: (_, args) => {
       const meal = meals.find(meal => meal.id == args.id);
       const index = meals.findIndex(meal => meal.id == args.id);
